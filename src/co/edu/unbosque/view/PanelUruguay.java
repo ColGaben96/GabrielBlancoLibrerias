@@ -3,14 +3,13 @@ package co.edu.unbosque.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class PanelColombia extends JPanel {
-
+public class PanelUruguay extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private PanelTabla tabla = new PanelTabla();
 	private PanelstatsANDoper statsANDoper = new PanelstatsANDoper();
-	public static final String COUNTRYNAME = "Colombia";
+	public static final String COUNTRYNAME = "Uruguay";
 	
-	public PanelColombia() {
+	public PanelUruguay() {
 		cargar();
 		addComponentes();
 	}

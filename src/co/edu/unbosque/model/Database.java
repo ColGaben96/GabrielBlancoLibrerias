@@ -9,7 +9,7 @@ public class Database {
 	private Statement status;
 	private ResultSet result;
 	public Database() {
-		JOptionPane.showMessageDialog(null, "Este programa usa conexión a internet\nCuando esté listo pulse el botón para continuar", "Advertencia", JOptionPane.WARNING_MESSAGE, null);
+		JOptionPane.showMessageDialog(null, "Este programa usa conexión a internet. Los cambios en los datos se demoran de acuerdo a la velocidad de internet.\nCuando esté listo pulse el botón para continuar", "Advertencia", JOptionPane.WARNING_MESSAGE, null);
 		try {
 			String url = "jdbc:mysql://remotemysql.com:3306/u1eDZqJ2oP";
 			String user = "u1eDZqJ2oP";
@@ -52,10 +52,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getDate() throws Exception {
+	public String getDate(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("Date")+"\n";
 			}
@@ -65,10 +65,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getActiveCases() throws Exception {
+	public String getActiveCases(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("ActiveCases")+"\n";
 			}
@@ -78,10 +78,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getRecoveredCases() throws Exception {
+	public String getRecoveredCases(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("RecoveredCases")+"\n";
 			}
@@ -91,10 +91,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getNewCases() throws Exception {
+	public String getNewCases(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("NewCases")+"\n";
 			}
@@ -104,10 +104,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getDeathReported() throws Exception {
+	public String getDeathReported(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("DeathReported")+"\n";
 			}
@@ -117,10 +117,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getTotalDeaths() throws Exception {
+	public String getTotalDeaths(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("TotalDeaths")+"\n";
 			}
@@ -130,10 +130,10 @@ public class Database {
 		}
 		return msg;
 	}
-	public String getTotalCases() throws Exception {
+	public String getTotalCases(String Country) throws Exception {
 		String msg = "";
 		try {
-			result = status.executeQuery("SELECT * FROM Colombia");
+			result = status.executeQuery("SELECT * FROM "+Country);
 			while(result.next()) {
 				msg += result.getString("TotalCases")+"\n";
 			}

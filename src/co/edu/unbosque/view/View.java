@@ -36,7 +36,7 @@ public class View extends JFrame {
 	 */
 	public void cargar() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(800,600);
+		setSize(1000,600);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
 		setVisible(true);
@@ -69,9 +69,45 @@ public class View extends JFrame {
 		//PanelCrearReporte
 		crearReporte.getOk().addActionListener(control);
 		crearReporte.getCancelar().addActionListener(control);
+		//PanelArgentina
+		pestanas.getArgentina().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getArgentina().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelBrasil
+		pestanas.getBrasil().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getBrasil().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelBolivia
+		pestanas.getBolivia().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getBolivia().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelChile
+		pestanas.getChile().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getChile().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
 		//PanelColombia
-		pestanas.getColombia().getOperaciones().getNuevoRegistro().addActionListener(control);
-		pestanas.getColombia().getOperaciones().getVerGrafica().addActionListener(control);
+		pestanas.getColombia().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getColombia().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelEcuador
+		pestanas.getEcuador().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getEcuador().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelGuyana
+		pestanas.getGuyana().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getGuyana().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelGuyanaFrancesa
+		pestanas.getGuyanaF().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getGuyanaF().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelParaguay
+		pestanas.getParaguay().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getParaguay().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelPeru
+		pestanas.getPeru().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getPeru().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelSuriname
+		pestanas.getSuriname().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getSuriname().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelUruguay
+		pestanas.getUruguay().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getUruguay().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
+		//PanelVenezuela
+		pestanas.getVenezuela().getStatsANDoper().getOperaciones().getNuevoRegistro().addActionListener(control);
+		pestanas.getVenezuela().getStatsANDoper().getOperaciones().getVerGrafica().addActionListener(control);
 	}
 	
 	public String cargarArchivo() throws IOException {

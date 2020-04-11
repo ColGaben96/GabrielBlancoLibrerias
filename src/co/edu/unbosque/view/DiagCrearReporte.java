@@ -18,7 +18,7 @@ public class DiagCrearReporte extends JDialog {
 	
 	public void cargar() {
 		setLayout(new GridLayout(5, 2));
-		setSize(300, 300);
+		setSize(300, 200);
 		setLocationRelativeTo(null);
 		Ok.setActionCommand(OK);
 		Cancelar.setActionCommand(CANCELAR);

@@ -61,7 +61,7 @@ public class Controller implements ActionListener {
 					GUI();
 					break;
 				case 2:
-					view.getDialogos().output("Toma tu query papu :v", mundo.getDb().getDate(),
+					view.getDialogos().output("Toma tu query papu :v", mundo.getDb().getDate("Colombia"),
 							JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
@@ -84,7 +84,19 @@ public class Controller implements ActionListener {
 		try {
 			view.setTitle(NOMBREPROYECTO);
 			view.iniciar(this);
+			anadirReportesArgentina();
+			anadirReportesBolivia();
+			anadirReportesBrasil();
+			anadirReportesChile();
 			anadirReportesColombia();
+			anadirReportesEcuador();
+			anadirReportesGuyana();
+			anadirReportesGuyanaFrancesa();
+			anadirReportesParaguay();
+			anadirReportesPeru();
+			anadirReportesSuriname();
+			anadirReportesUruguay();
+			anadirReportesVenezuela();
 		} catch (Exception e) {
 			StringWriter errors = new StringWriter();
 			e.printStackTrace(new PrintWriter(errors));
@@ -95,23 +107,202 @@ public class Controller implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	
+	public void anadirReportesArgentina() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Argentina").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Argentina").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Argentina").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Argentina").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Argentina").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Argentina").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Argentina").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getArgentina().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesBrasil() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Brasil").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Brasil").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Brasil").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Brasil").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Brasil").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Brasil").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Brasil").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getBrasil().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesBolivia() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Bolivia").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Bolivia").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Bolivia").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Bolivia").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Bolivia").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Bolivia").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Bolivia").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getBolivia().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesChile() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Chile").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Chile").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Chile").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Chile").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Chile").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Chile").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Chile").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getChile().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
 	public void anadirReportesColombia() throws Exception {
-		String[] fecha = mundo.getDb().getDate().split("\n");
-		String[] casosActivos = mundo.getDb().getActiveCases().split("\n");
-		String[] casosRecuperados = mundo.getDb().getRecoveredCases().split("\n");
-		String[] casosNuevos = mundo.getDb().getNewCases().split("\n");
-		String[] muertesReportadas = mundo.getDb().getDeathReported().split("\n");
-		String[] totalMuertos = mundo.getDb().getTotalDeaths().split("\n");
-		String[] totalCasos = mundo.getDb().getTotalDeaths().split("\n");
+		String[] fecha = mundo.getDb().getDate("Colombia").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Colombia").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Colombia").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Colombia").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Colombia").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Colombia").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Colombia").split("\n");
 		for (int i = 0; i < fecha.length; i++) {
 			view.getPestanas().getColombia().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
 					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
 		}
 	}
-	public void insertarReporte(String Country, int ID, String Date, int ActiveCases, int RecoveredCases, int NewCases, int DeathReported, int TotalDeaths, int TotalCases) throws Exception {
-		mundo.getDb().insertReport(Country, ID, Date, ActiveCases, RecoveredCases, NewCases, DeathReported, TotalDeaths, TotalCases);
-		view.getPestanas().getColombia().getTabla().anadirReporte(Date, String.valueOf(ActiveCases), String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported), String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+	
+	public void anadirReportesEcuador() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Ecuador").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Ecuador").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Ecuador").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Ecuador").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Ecuador").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Ecuador").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Ecuador").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getEcuador().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesGuyana() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Guyana").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Guyana").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Guyana").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Guyana").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Guyana").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Guyana").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Guyana").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getGuyana().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesGuyanaFrancesa() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Guyana Francesa").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Guyana Francesa").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Guyana Francesa").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Guyana Francesa").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Guyana Francesa").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Guyana Francesa").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Guyana Francesa").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getGuyanaF().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesParaguay() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Paraguay").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Paraguay").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Paraguay").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Paraguay").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Paraguay").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Paraguay").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Paraguay").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getParaguay().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesPeru() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Peru").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Peru").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Peru").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Peru").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Peru").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Peru").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Peru").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getPeru().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesSuriname() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Suriname").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Suriname").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Suriname").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Suriname").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Suriname").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Suriname").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Suriname").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getSuriname().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesUruguay() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Uruguay").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Uruguay").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Uruguay").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Uruguay").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Uruguay").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Uruguay").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Uruguay").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getUruguay().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+	
+	public void anadirReportesVenezuela() throws Exception {
+		String[] fecha = mundo.getDb().getDate("Venezuela").split("\n");
+		String[] casosActivos = mundo.getDb().getActiveCases("Venezuela").split("\n");
+		String[] casosRecuperados = mundo.getDb().getRecoveredCases("Venezuela").split("\n");
+		String[] casosNuevos = mundo.getDb().getNewCases("Venezuela").split("\n");
+		String[] muertesReportadas = mundo.getDb().getDeathReported("Venezuela").split("\n");
+		String[] totalMuertos = mundo.getDb().getTotalDeaths("Venezuela").split("\n");
+		String[] totalCasos = mundo.getDb().getTotalDeaths("Venezuela").split("\n");
+		for (int i = 0; i < fecha.length; i++) {
+			view.getPestanas().getVenezuela().getTabla().anadirReporte(fecha[i], casosActivos[i], casosRecuperados[i],
+					casosNuevos[i], muertesReportadas[i], totalMuertos[i], totalCasos[i]);
+		}
+	}
+
+	public void insertarReporte(String Country, int ID, String Date, int ActiveCases, int RecoveredCases, int NewCases,
+			int DeathReported, int TotalDeaths, int TotalCases) throws Exception {
+		mundo.getDb().insertReport(Country, ID, Date, ActiveCases, RecoveredCases, NewCases, DeathReported, TotalDeaths,
+				TotalCases);
+		if(obtenerTituloPestanaSeleccionada() == "Colombia") {
+			view.getPestanas().getColombia().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+	}
+
+	public String obtenerTituloPestanaSeleccionada() {
+		return view.getPestanas().getPestanas().getTitleAt(view.getPestanas().getPestanas().getSelectedIndex());
 	}
 
 	/**
@@ -145,27 +336,121 @@ public class Controller implements ActionListener {
 			/*
 			 * Panel Crear Reporte
 			 */
-			if(e.getActionCommand() == view.getCrearReporte().OK) {
-				String Date = view.getCrearReporte().getTxFecha().getText();
-				String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
-				String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
-				String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
-				String[] strActiveCases = mundo.getDb().getActiveCases().split("\n");
-				String[] strTotalDeaths = mundo.getDb().getTotalDeaths().split("\n");
-				String[] strTotalCases = mundo.getDb().getTotalCases().split("\n");
-				int ActiveCases = Integer.parseInt(strActiveCases[0])+Integer.parseInt(NewCases)-Integer.parseInt(RecoveredCases)-Integer.parseInt(DeathReported);
-				int TotalDeaths = Integer.parseInt(strTotalDeaths[0])+Integer.parseInt(DeathReported);
-				int TotalCases = Integer.parseInt(strTotalCases[0])+ActiveCases+Integer.parseInt(RecoveredCases);
-				insertarReporte("Colombia", view.getPestanas().getColombia().getTabla().getContador(), Date, ActiveCases, Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases), Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
-				view.getCrearReporte().setVisible(false);
-				view.getCrearReporte().clean();
+			if (obtenerTituloPestanaSeleccionada() == "Colombia") {
+				if (e.getActionCommand() == view.getCrearReporte().OK) {
+					String Date = view.getCrearReporte().getTxFecha().getText();
+					String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+					String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+					String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+					String[] strActiveCases = mundo.getDb().getActiveCases("Colombia").split("\n");
+					String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Colombia").split("\n");
+					String[] strTotalCases = mundo.getDb().getTotalCases("Colombia").split("\n");
+					int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+							- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+					int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+					int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+							+ Integer.parseInt(RecoveredCases);
+					insertarReporte("Colombia",
+							view.getPestanas().getColombia().getTabla().getContador(), Date, ActiveCases,
+							Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+					view.getCrearReporte().setVisible(false);
+					view.getCrearReporte().clean();
+				}
 			}
 			/*
-			 * Panel Colombia
+			 * Cualquier Panel
 			 */
-			if(e.getActionCommand() == view.getPestanas().getColombia().getOperaciones().NUEVOREGISTRO) {
-				view.getCrearReporte().clean();
-				view.getCrearReporte().setVisible(true);
+			if (obtenerTituloPestanaSeleccionada() == "Argentina") {
+				if (e.getActionCommand() == view.getPestanas().getArgentina().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Argentina");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Brasil") {
+				if (e.getActionCommand() == view.getPestanas().getBrasil().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Brasil");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Bolivia") {
+				if (e.getActionCommand() == view.getPestanas().getBolivia().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Bolivia");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Chile") {
+				if (e.getActionCommand() == view.getPestanas().getChile().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Chile");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Colombia") {
+				if (e.getActionCommand() == view.getPestanas().getColombia().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Colombia");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Ecuador") {
+				if (e.getActionCommand() == view.getPestanas().getEcuador().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Ecuador");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Guyana") {
+				if (e.getActionCommand() == view.getPestanas().getGuyana().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Guyana");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Guyana Francesa") {
+				if (e.getActionCommand() == view.getPestanas().getGuyanaF().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Guyana Francesa");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Paraguay") {
+				if (e.getActionCommand() == view.getPestanas().getParaguay().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Paraguay");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Peru") {
+				if (e.getActionCommand() == view.getPestanas().getPeru().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Peru");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Suriname") {
+				if (e.getActionCommand() == view.getPestanas().getSuriname().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Suriname");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Uruguay") {
+				if (e.getActionCommand() == view.getPestanas().getUruguay().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Uruguay");
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Venezuela") {
+				if (e.getActionCommand() == view.getPestanas().getVenezuela().getStatsANDoper().getOperaciones().NUEVOREGISTRO) {
+					view.getCrearReporte().clean();
+					view.getCrearReporte().setVisible(true);
+					view.getCrearReporte().setTitle("Crear nuevo reporte para Venezuela");
+				}
 			}
 
 		}
