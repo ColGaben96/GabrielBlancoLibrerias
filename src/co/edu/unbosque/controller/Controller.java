@@ -294,8 +294,68 @@ public class Controller implements ActionListener {
 			int DeathReported, int TotalDeaths, int TotalCases) throws Exception {
 		mundo.getDb().insertReport(Country, ID, Date, ActiveCases, RecoveredCases, NewCases, DeathReported, TotalDeaths,
 				TotalCases);
+		if(obtenerTituloPestanaSeleccionada() == "Argentina") {
+			view.getPestanas().getArgentina().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Brasil") {
+			view.getPestanas().getBrasil().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Bolivia") {
+			view.getPestanas().getBolivia().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Chile") {
+			view.getPestanas().getChile().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
 		if(obtenerTituloPestanaSeleccionada() == "Colombia") {
 			view.getPestanas().getColombia().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Ecuador") {
+			view.getPestanas().getEcuador().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Guyana") {
+			view.getPestanas().getGuyana().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Guyana Francesa") {
+			view.getPestanas().getGuyanaF().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Paraguay") {
+			view.getPestanas().getParaguay().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Peru") {
+			view.getPestanas().getPeru().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Suriname") {
+			view.getPestanas().getSuriname().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Uruguay") {
+			view.getPestanas().getUruguay().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
+					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
+					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
+		}
+		if(obtenerTituloPestanaSeleccionada() == "Venezuela") {
+			view.getPestanas().getVenezuela().getTabla().anadirReporte(Date, String.valueOf(ActiveCases),
 					String.valueOf(RecoveredCases), String.valueOf(NewCases), String.valueOf(DeathReported),
 					String.valueOf(TotalDeaths), String.valueOf(TotalCases));
 		}
@@ -336,6 +396,94 @@ public class Controller implements ActionListener {
 			/*
 			 * Panel Crear Reporte
 			 */
+			if (obtenerTituloPestanaSeleccionada() == "Argentina") {
+				if (e.getActionCommand() == view.getCrearReporte().OK) {
+					String Date = view.getCrearReporte().getTxFecha().getText();
+					String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+					String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+					String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+					String[] strActiveCases = mundo.getDb().getActiveCases("Argentina").split("\n");
+					String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Argentina").split("\n");
+					String[] strTotalCases = mundo.getDb().getTotalCases("Argentina").split("\n");
+					int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+							- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+					int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+					int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+							+ Integer.parseInt(RecoveredCases);
+					insertarReporte("Argentina",
+							view.getPestanas().getArgentina().getTabla().getContador(), Date, ActiveCases,
+							Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+					view.getCrearReporte().setVisible(false);
+					view.getCrearReporte().clean();
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Brasil") {
+				if (e.getActionCommand() == view.getCrearReporte().OK) {
+					String Date = view.getCrearReporte().getTxFecha().getText();
+					String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+					String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+					String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+					String[] strActiveCases = mundo.getDb().getActiveCases("Brasil").split("\n");
+					String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Brasil").split("\n");
+					String[] strTotalCases = mundo.getDb().getTotalCases("Brasil").split("\n");
+					int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+							- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+					int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+					int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+							+ Integer.parseInt(RecoveredCases);
+					insertarReporte("Brasil",
+							view.getPestanas().getBrasil().getTabla().getContador(), Date, ActiveCases,
+							Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+					view.getCrearReporte().setVisible(false);
+					view.getCrearReporte().clean();
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Bolivia") {
+				if (e.getActionCommand() == view.getCrearReporte().OK) {
+					String Date = view.getCrearReporte().getTxFecha().getText();
+					String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+					String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+					String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+					String[] strActiveCases = mundo.getDb().getActiveCases("Bolivia").split("\n");
+					String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Bolivia").split("\n");
+					String[] strTotalCases = mundo.getDb().getTotalCases("Bolivia").split("\n");
+					int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+							- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+					int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+					int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+							+ Integer.parseInt(RecoveredCases);
+					insertarReporte("Bolivia",
+							view.getPestanas().getBolivia().getTabla().getContador(), Date, ActiveCases,
+							Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+					view.getCrearReporte().setVisible(false);
+					view.getCrearReporte().clean();
+				}
+			}
+			if (obtenerTituloPestanaSeleccionada() == "Chile") {
+				if (e.getActionCommand() == view.getCrearReporte().OK) {
+					String Date = view.getCrearReporte().getTxFecha().getText();
+					String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+					String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+					String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+					String[] strActiveCases = mundo.getDb().getActiveCases("Chile").split("\n");
+					String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Chile").split("\n");
+					String[] strTotalCases = mundo.getDb().getTotalCases("Chile").split("\n");
+					int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+							- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+					int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+					int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+							+ Integer.parseInt(RecoveredCases);
+					insertarReporte("Chile",
+							view.getPestanas().getChile().getTabla().getContador(), Date, ActiveCases,
+							Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+					view.getCrearReporte().setVisible(false);
+					view.getCrearReporte().clean();
+				}
+			}
 			if (obtenerTituloPestanaSeleccionada() == "Colombia") {
 				if (e.getActionCommand() == view.getCrearReporte().OK) {
 					String Date = view.getCrearReporte().getTxFecha().getText();
@@ -356,6 +504,182 @@ public class Controller implements ActionListener {
 							Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
 					view.getCrearReporte().setVisible(false);
 					view.getCrearReporte().clean();
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Ecuador") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Ecuador").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Ecuador").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Ecuador").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Ecuador",
+								view.getPestanas().getEcuador().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Guyana") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Guyana").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Guyana").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Guyana").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Guyana",
+								view.getPestanas().getGuyana().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Guyana Francesa") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Guyana Francesa").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Guyana Francesa").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Guyana Francesa").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Guyana Francesa",
+								view.getPestanas().getGuyanaF().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Paraguay") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Paraguay").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Paraguay").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Paraguay").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Paraguay",
+								view.getPestanas().getParaguay().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Peru") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Peru").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Peru").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Peru").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Peru",
+								view.getPestanas().getPeru().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Suriname") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Suriname").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Suriname").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Suriname").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Suriname",
+								view.getPestanas().getSuriname().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Uruguay") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Uruguay").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Uruguay").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Uruguay").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Uruguay",
+								view.getPestanas().getUruguay().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
+				}
+				if (obtenerTituloPestanaSeleccionada() == "Venezuela") {
+					if (e.getActionCommand() == view.getCrearReporte().OK) {
+						String Date = view.getCrearReporte().getTxFecha().getText();
+						String NewCases = view.getCrearReporte().getTxNuevosCasos().getText();
+						String RecoveredCases = view.getCrearReporte().getTxCasosRecuperados().getText();
+						String DeathReported = view.getCrearReporte().getTxMuertesReportadas().getText();
+						String[] strActiveCases = mundo.getDb().getActiveCases("Venezuela").split("\n");
+						String[] strTotalDeaths = mundo.getDb().getTotalDeaths("Venezuela").split("\n");
+						String[] strTotalCases = mundo.getDb().getTotalCases("Venezuela").split("\n");
+						int ActiveCases = Integer.parseInt(strActiveCases[0]) + Integer.parseInt(NewCases)
+								- Integer.parseInt(RecoveredCases) - Integer.parseInt(DeathReported);
+						int TotalDeaths = Integer.parseInt(strTotalDeaths[0]) + Integer.parseInt(DeathReported);
+						int TotalCases = Integer.parseInt(strTotalCases[0]) + ActiveCases
+								+ Integer.parseInt(RecoveredCases);
+						insertarReporte("Venezuela",
+								view.getPestanas().getVenezuela().getTabla().getContador(), Date, ActiveCases,
+								Integer.parseInt(RecoveredCases), Integer.parseInt(NewCases),
+								Integer.parseInt(DeathReported), TotalDeaths, TotalCases);
+						view.getCrearReporte().setVisible(false);
+						view.getCrearReporte().clean();
+					}
 				}
 			}
 			/*
