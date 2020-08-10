@@ -2,27 +2,31 @@ package co.edu.unbosque.model;
 
 import java.sql.*;
 
-import javax.swing.JOptionPane;
-
 public class Database {
 	private Connection db;
 	private Statement status;
 	private ResultSet result;
 	public Database() {
-		JOptionPane.showMessageDialog(null, "Este programa usa conexión a internet. Los cambios en los datos se demoran de acuerdo a la velocidad de internet.\nCuando esté listo pulse el botón para continuar", "Advertencia", JOptionPane.WARNING_MESSAGE, null);
-		try {
-			String url = "jdbc:mysql://remotemysql.com:3306/u1eDZqJ2oP";
-			String user = "u1eDZqJ2oP";
-			String pass = "946E388ojx";
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			db = DriverManager.getConnection(url, user, pass);
-			status = db.createStatement();
-			System.out.println("Connected Successfuly!");
-			
-		} catch (Exception e) {
-			System.out.println("Can't connect! Please check your internet connection and try again. If problem the persists consult with your network administrator to solve the problem\n"
-					+ ""+e.getMessage());
-		}
+		//JOptionPane.showMessageDialog(null, "Este programa usa conexiï¿½n a internet. Los cambios en los datos se demoran de acuerdo a la velocidad de internet.\nCuando estï¿½ listo pulse el botï¿½n para continuar", "Advertencia", JOptionPane.WARNING_MESSAGE, null);
+		Thread connect2DB = new Thread() {
+			@Override
+			public void run() {
+				try {
+					String url = "jdbc:mysql://remotemysql.com:3306/u1eDZqJ2oP";
+					String user = "u1eDZqJ2oP";
+					String pass = "946E388ojx";
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					db = DriverManager.getConnection(url, user, pass);
+					status = db.createStatement();
+					System.out.println("Connected Successfuly!");
+					
+				} catch (Exception e) {
+					System.out.println("Can't connect! Please check your internet connection and try again. If problem the persists consult with your network administrator to solve the problem\n"
+							+ ""+e.getMessage());
+				}
+			}
+		};
+		connect2DB.start();
 	}
 	public String closeConnection() throws Exception {
 		String msg = "";
